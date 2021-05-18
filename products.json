@@ -1,0 +1,86 @@
+[
+    {
+        "title": "Skateboard Great two",
+        "price": 399,
+        "shortDesc": "Man",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "skateboard-greta.png"
+    },
+    {
+        "title": "Skateboard generic three",
+        "price": 699,
+        "shortDesc": "Unisex",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "skateboard-generic.png"
+    },
+    {
+        "title": "Skateboard generic one",
+        "price": 109,
+        "shortDesc": "Women",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "skateboard-generic.png"
+    },
+    {
+        "title": "Skateboard Greta",
+        "price": 893,
+        "shortDesc": "Unisex",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "skateboard-greta.png"
+    },
+    {
+        "title": "Skateboard generic five",
+        "price": 369,
+        "shortDesc": "Unisex",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "skateboard-generic.png"
+    },
+    {
+        "title": "Hoodie Ash",
+        "price": 969,
+        "shortDesc": "Ash unisex",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "hoodie-ash.png"
+    },
+    {
+        "title": "Wheel Spinner",
+        "price": 139,
+        "shortDesc": "Soft",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "wheel-spinner.png"
+    },
+    {
+        "title": "Skateboard generic four",
+        "price": 159,
+        "shortDesc": "Unisex",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "skateboard-generic.png"
+    },
+    {
+        "title": "Hoodie Fire",
+        "price": 695,
+        "shortDesc": "Fire unisex",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "hoodie-fire.png"
+    },
+    {
+        "title": "Hoodie Ocean",
+        "price": 459,
+        "shortDesc": "Ocean unisex",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "hoodie-ocean.png"
+    },
+    {
+        "title": "Wheel Rocket",
+        "price": 995,
+        "shortDesc": "Hard",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "wheel-rocket.png"
+    },
+    {
+        "title": "Wheel Wave",
+        "price": 449,
+        "shortDesc": "Medium",
+        "longDesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+        "imgFile": "wheel-wave.png"
+    }
+]
