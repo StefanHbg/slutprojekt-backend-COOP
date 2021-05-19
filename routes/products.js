@@ -3,24 +3,23 @@ const Product = require('../modules/Product')
 const router = express.Router()
 const product = require('../products.json');
 
-
 router.get('/', (req, res) => {
-    res.send(product)
+    res.json(product)
 })
 
-router.post('/products', (req, res) => {
+router.post('/', (req, res) => {
+
+})
+
+router.post('/:id', (req, res) => {
     
 })
 
-router.post('/products/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
     
 })
 
-router.patch('/products/:id', (req, res) => {
-    
-})
-
-router.delete('/products/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     
 })
 
