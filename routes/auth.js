@@ -7,29 +7,33 @@ const saltRounds = 10
 
 router.post('/', async (req, res) => {
     // Hämta data för den användare som har det namn som skrivits in
-    const user = await User.findOne({ user: req.body.email })
-    //console.log(req.body.password);
-
+    const user = await User.findOne({ "user.email": req.body.email })
+    //console.log(req.body.email);
+    console.log(user);
     if (user) {
         console.log(req.body.email);
+        console.log(req.body.password);
         // Kolla om lösenordet stämmer. 
-        bcrypt.compare(req.body.password, user.password, function(err, result) {
+        //console.log(user.user.password);
+        bcrypt.compare(req.body.password, user.user.password, function(err, result) {
             if (err) res.json(err)
 
-            if (result !== false) {
+            if (result) {
                 //console.log(result)
                 const payload = {
                     iss: 'coop',
-                    exp: Math.floor(Date.now() / 1000) + (60 * 5),
-                    role: user.role
+                    exp: Math.floor(Date.now() / 1000) + (60 * 0.5),
+                    role: user.user.role
                 }
                 // I så fall, signa och skicka token.
                 const token = jwt.sign(payload, process.env.SECRET)
                 res.cookie('auth-token', token)
-                res.send("Välkommen " + user.name)
-
+                res.json({
+                    token: token,
+                    user: user.user
+                })
             } else {
-                res.send("Dina credentials stämde inte")
+                res.json({ message: 'Your credentials is wrong' })
             }
         })
     }
