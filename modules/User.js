@@ -12,7 +12,10 @@ const userSchema = new Schema({
             zip: String,
             city: String
         },
-        orderHistory: []
+        orderHistory: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Order'
+        }]
     }
 });
 

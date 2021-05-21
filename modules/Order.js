@@ -4,7 +4,10 @@ const { Schema } = mongoose;
 const orderSchema = new Schema({
     timeStamp: Date, 
     status: String,
-    items: [],
+    items: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Product'
+    }],
     orderValue: Number
 });
 

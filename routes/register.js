@@ -5,11 +5,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const saltRounds = 10
 
-//const router = new Router()
-
 router.post('/', (req, res) => {
-    console.log('inne i req body', req.body);
-
     bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
         if (err) res.json(err)
         else {

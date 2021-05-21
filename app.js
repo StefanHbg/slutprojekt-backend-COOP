@@ -3,7 +3,6 @@ const app = express()
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 
-const error404 = require('./routes/error404');
 const orders = require('./routes/orders');
 const products = require('./routes/products');
 const register = require('./routes/register');
@@ -42,6 +41,5 @@ app.use('/api/register', register);
 app.use('/api/auth', auth)
 app.use('/api/products', products);
 app.use('/api/orders', orders);
-app.use('/api/*', error404);
 
 module.exports = app
