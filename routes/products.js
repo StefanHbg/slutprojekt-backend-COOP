@@ -7,8 +7,20 @@ router.get('/', (req, res) => {
     res.json(product)
 })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+    const product = await product.push({
+        "title": req.body.title,
+        "price": req.body.price,
+        "shortDesc": req.body.shortDesc,
+        "longDesc": req.body.longDesc,
+        "imgFile": req.body.imgFile
+    })
+    if (product) {
+        res.status(201).send(product)
 
+    } else {
+        res.send('Could not create a product.')
+    }
 })
 
 router.post('/:id', (req, res) => {

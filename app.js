@@ -41,7 +41,6 @@ db.once('open', () => {
 app.use('/api/register', register);
 app.use('/api/auth', auth)
 app.use('/api/products', products);
-app.use('/api/products/:id', products);
 app.use('/api/orders', orders);
 app.use('/api/*', error404);
 

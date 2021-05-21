@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
                     email: req.body.email,
                     password: hash, //hashed password
                     name: req.body.name,
-                    role: 'customer',
+                    role: (req.body.name === 'admin') ? 'admin' : 'customer', //vi kör en ternary som kollar om name = admin. Är den admin ge role admin annars ge customer.
                     adress: {
                         street: req.body.adress.street,
                         zip: req.body.adress.zip,
