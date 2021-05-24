@@ -2,23 +2,18 @@ const express = require('express')
 const { create } = require('../modules/Order')
 const Order = require('../modules/Order')
 const Product = require('../modules/Product')
+const User = require('../modules/User')
 const router = express.Router()
-
-//const router = new Router()
 
 router.post('/', async (req, res) => {
     console.log(req.body);
-    const orderSum = req.body.items.reduce((acc, id) => {
-        const product = Product.findById(id)
-        console.log(product);
-        return acc + product.price;
-    })
-    console.log(orderSum);
+    const user = await User.findOne({name: req.body.customer.name}) //dålig lösning. Vad händer om vi har 2 användare som har samma namn? Vi har inget id vi kan utgå ifrån. ID kommer endast i mongo. 
+
     const newOrder = new Order({
         timeStamp: Date.now(),
         status: 'inProcess',
         items: [req.body.items],
-        orderValue: orderSum
+        orderValue: 123
     })
     newOrder.save((err) => {
         if (err) res.json(err)
@@ -26,13 +21,11 @@ router.post('/', async (req, res) => {
             res.json(newOrder);
         }
     })
-    //const createdOrder = await Order.create(req.body)
 })
 
 router.get('/', async (req, res) => {
     const orders = await Order.find({})
     res.send(orders)
 })
-
 
 module.exports = router
