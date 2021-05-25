@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
                 const payload = {
                     _id: user.id,
                     iss: 'coop',
-                    exp: Math.floor(Date.now() / 1000) + (60 * 10),
+                    exp: Math.floor(Date.now() / 1000) + (60 * 60),
                     name: user.user.name,
                     email: user.user.email,
                     role: user.user.role,

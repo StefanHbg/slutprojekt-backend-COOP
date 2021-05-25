@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
     user: {
+        _id: Schema.Types.ObjectId,
         email: String,
         password: String, //hashed password
         name: String,
