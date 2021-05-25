@@ -21,16 +21,20 @@ router.post('/', async (req, res) => {
             if (result) {
                 //console.log(result)
                 const payload = {
+                    _id: user.id,
                     iss: 'coop',
-                    exp: Math.floor(Date.now() / 1000) + (60 * 0.5),
-                    role: user.user.role
+                    exp: Math.floor(Date.now() / 1000) + (60 * 10),
+                    name: user.user.name,
+                    email: user.user.email,
+                    role: user.user.role,
+                    adress: user.user.adress
                 }
                 // I så fall, signa och skicka token.
                 const token = jwt.sign(payload, process.env.SECRET)
                 res.cookie('auth-token', token)
                 res.json({
                     token: token,
-                    user: user.user
+                    user: payload
                 })
             } else {
                 res.json({ message: 'Your credentials is wrong' })
