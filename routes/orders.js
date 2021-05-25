@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
                 res.status(401).json(err)
             } else {
                 if (payload.role === 'customer') {     
-                    const user = await User.findOne({ "user.email": payload.email });
+                    //const user = await User.findOne({ "user.email": payload.email });
                     const products = await Product.find({ _id: { $in: items } });
 
                     const newOrder = await new Order({
@@ -36,13 +36,15 @@ router.post('/', async (req, res) => {
                             res.json(err)
                         }
                     })
-                    if (user) {
-                        console.log('send res')
-                        console.log('new order id:', newOrder._id)
-                        //user.user.orderHistory.populate(newOrder._id)
-                        user.user.orderHistory.push(newOrder._id);
-                        res.json(newOrder);
-                    }
+                    
+                    const user = await User.findOneAndUpdate(
+                        { "user.email": payload.email },
+                        { $push: {"user.orderHistory": newOrder._id}},
+                        {useFindAndModify: false}
+                    );
+
+                    if (user) res.json(newOrder);
+
                 }  else if (payload.role === 'admin') {
                     res.status(401).json(err);
                 }  else {
@@ -57,6 +59,7 @@ router.get('/', async (req, res) => {
         res.send("Bara för inloggade.")
     } else {
         const token = await req.cookies['auth-token']
+        console.log('tokeeen', token);
         jwt.verify(token, process.env.SECRET, async(err, payload) => {
             console.log('inne i verify');
             if (err) {
@@ -71,16 +74,15 @@ router.get('/', async (req, res) => {
                 console.log('payload:', payload);
                 const user = await User.findOne({ "user.email": payload.email });
 
-                user.user.orderHistory.forEach(async(id) => {
+                await user.user.orderHistory.forEach(async(id) => {
                     const order = await Order.findById(id)
-                    //const order = await Order.find({_id:{$in:id.orderHistory}})
-                    console.log('id', id);
-                    console.log(order);
-                    console.log(orderProducts);
                     orderProducts.push(order);
                 });
                 console.log('inne customer', user);
-                res.send(orderProducts)
+                setTimeout(()=> {
+                    console.log(orderProducts);
+                    res.json(orderProducts)
+                }, 1000)
             }
         })
     }
