@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
+// Skapar ett nytt schema för produkter.
 const productSchema = new Schema({
     title: String,
     price: Number,

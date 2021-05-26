@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
+// Skapar ett nytt schema för orders.
 const orderSchema = new Schema({
     timeStamp: Date, 
     status: String,

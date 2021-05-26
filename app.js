@@ -8,12 +8,10 @@ const products = require('./routes/products');
 const register = require('./routes/register');
 const auth = require('./routes/auth');
 
-app.use( express.static('public') )
-
+// Olika middlewares för att vår applikation skall funka förutom rad 14 (vår dotenv) där vi lagrar vår secret. 
+app.use(express.static('public') )
 app.use(express.json());
-
 require('dotenv').config() 
-
 app.use(cookieParser())
 
 // Läsa från req.body
@@ -26,12 +24,12 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, dbName:
 // Ett "handtag" till vår uppkoppling
 const db = mongoose.connection
 
-// Fel?
+// Felhantering
 db.on('error', (err) => {
     console.error(err)
 })
 
-// Starta upp db-koppling
+// Starta upp en db-koppling
 db.once('open', () => {
     console.log('Startat en uppkoppling mot db.')
 })

@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
+// Skapar ett nytt schema för användare.
 const userSchema = new Schema({
     user: {
         _id: Schema.Types.ObjectId,
-        email: String,
-        password: String, //hashed password
+        email: {
+            type: String,
+            required: true
+        },
+        password: String,
         name: String,
-        role: String, // admin or customer
+        role: String, 
         adress: {
             street: String,
             zip: String,

@@ -4,18 +4,24 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const saltRounds = 10
 
+// Routing för att skapa en användare /api/register.
 router.post('/', async (req, res) => {
+    // Kollar ifall användaren redan är registrerad. 
     const user = await User.findOne({ "user.email": req.body.email })
+    // Är användaren inte registrerad så körs koden nedan
     if (!user) {
+        // Här hashas lösenordet så att det blir extra säkert och som inte kan avläsas i browsern alt postman.
         bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
             if (err) res.json(err)
             else {
+                // Skapar en ny user.
                 const newUser = new User({
                     user: {
                         email: req.body.email,
-                        password: hash, //hashed password
+                        password: hash,
                         name: req.body.name,
-                        role: (req.body.role === 'admin') ? 'admin' : 'customer', //vi kör en ternary som kollar om name = admin. Är den admin ge role admin annars ge customer.
+                        // Vi kör en ternary som alltid sätter role till customer förutsatt att man inte är admin. Admins reggas i vår DB.
+                        role: (req.body.role === 'admin') ? 'admin' : 'customer', 
                         adress: {
                             street: req.body.adress.street,
                             zip: req.body.adress.zip,
@@ -24,6 +30,7 @@ router.post('/', async (req, res) => {
                         orderHistory: []
                     }
                 })
+                // Sparar användaren.
                 newUser.save((err) => {
                     if (err) res.json(err)
                     else {
@@ -31,7 +38,7 @@ router.post('/', async (req, res) => {
                     }
                 })
             }
-        })
+        })    
     } else res.json({ msg: "Email is already taken" });
 })
 

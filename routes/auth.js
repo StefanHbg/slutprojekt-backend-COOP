@@ -5,21 +5,19 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const saltRounds = 10
 
+// Routing för inlogget.
 router.post('/', async (req, res) => {
-    // Hämta data för den användare som har det namn som skrivits in
+    // Hämta data för den användare som loggat in.
     const user = await User.findOne({ "user.email": req.body.email })
-    //console.log(req.body.email);
-    console.log(user);
+
+    // En if sats som kollar om den hittat en användare.
     if (user) {
-        console.log(req.body.email);
-        console.log(req.body.password);
-        // Kolla om lösenordet stämmer. 
-        //console.log(user.user.password);
+        // Kontrollera och jämföra om lösenordet stämmer överens. 
         bcrypt.compare(req.body.password, user.user.password, function(err, result) {
             if (err) res.json(err)
 
+            // Om lösenorden stämmer överens skapar vi en user payload.
             if (result) {
-                //console.log(result)
                 const payload = {
                     _id: user.id,
                     iss: 'coop',
@@ -29,7 +27,7 @@ router.post('/', async (req, res) => {
                     role: user.user.role,
                     adress: user.user.adress
                 }
-                // I så fall, signa och skicka token.
+                // Signa och skicka token samt user.
                 const token = jwt.sign(payload, process.env.SECRET)
                 res.cookie('auth-token', token)
                 res.json({
@@ -42,6 +40,5 @@ router.post('/', async (req, res) => {
         })
     }
 })
-
 
 module.exports = router
