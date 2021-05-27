@@ -21,20 +21,24 @@ router.post('/', async (req, res) => {
                 res.status(401).json(err)
             } else {
                 if (payload.role === 'customer') {     
-/* 
-                    const multipleProd = [];
-                    items.forEach(id => {
-
-                    }); Problem att lägga till flera av samma produkt. Summerar inte. Fråga Hans */
                     const products = await Product.find({ _id: { $in: items } });
-                    console.log('iteeems', items);
-                    console.log('produuuuuukter', products);
+
+                    // Skapar en variabel där vi lagrar det totala priset på ordervärdet. Vi loopar sedan igenom req.body.items eftersom att Product.find({}) ignorerar om det är flera av samma produkt. 
+                    let orderValue = 0;
+                    req.body.items.forEach(productID =>{
+                        // Kollar i products(rad 25) och kollar hur många gånger just den produkten finns i items. Med andra ord sätter vi det första hittade Index på en produkt från de valda _id.
+                        const index = products.findIndex(product => product._id.toString() === productID); 
+                        // Hämtar ut priset och lagrar i variabeln price. 
+                        const price = products[index].price 
+                        // Summerar priset.
+                        orderValue += price;
+                    })
                     // Skapar en ny order och räkna ihop summan av produkterna. 
                     const newOrder = await new Order({
                         timeStamp: Date.now(),
                         status: 'inProcess',
                         items: items,
-                        orderValue: products.reduce((total, prod) => total + prod.price, 0)
+                        orderValue: orderValue
                     })
                     // Sparar en ny order. 
                     await newOrder.save((err) => {

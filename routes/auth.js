@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const saltRounds = 10
 
-// Routing för inlogget.
+// Routing för inlogget. /api/auth.
 router.post('/', async (req, res) => {
     // Hämta data för den användare som loggat in.
     const user = await User.findOne({ "user.email": req.body.email })
